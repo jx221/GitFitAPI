@@ -3,6 +3,10 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 const exersiseRoutes = require('./src/routes/exersiseRoutes');
+const inputExerciseRoute = require('./src/routes/inputWorkout');
+const generateRoute = require('./src/routes/workoutGenerator');
+
+
 const app = express();
 app.get('/', (req, res) => {
     res.send('Welcome to my API!');
@@ -19,7 +23,8 @@ const pool = new Pool({
 // Define routes...
 
 app.use('/api/exersises', exersiseRoutes);
-
+app.use('/api', inputExerciseRoute);
+app.use('/api', generateRoute);
 
 
 const PORT = process.env.PORT || 3000;
