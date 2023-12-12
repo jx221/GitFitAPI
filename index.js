@@ -5,6 +5,7 @@ const { Pool } = require('pg');
 const exersiseRoutes = require('./src/routes/exersiseRoutes');
 const inputExerciseRoute = require('./src/routes/inputWorkout');
 const generateRoute = require('./src/routes/workoutGenerator');
+const deleteRoute = require('./src/routes/delete');
 
 
 const app = express();
@@ -25,6 +26,7 @@ const pool = new Pool({
 app.use('/api/exersises', exersiseRoutes);
 app.use('/api', inputExerciseRoute);
 app.use('/api', generateRoute);
+app.use('/api', deleteRoute);
 
 
 const PORT = process.env.PORT || 3000;
